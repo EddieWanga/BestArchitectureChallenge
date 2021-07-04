@@ -6,7 +6,7 @@ import 'dart:async' as _i3;
 
 import 'package:best_architecture_challenge/features/fetch_posts/data/datasources/fetch_posts_remote_data_source.dart'
     as _i2;
-import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart'
+import 'package:best_architecture_challenge/features/fetch_posts/data/models/post_model.dart'
     as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -26,8 +26,8 @@ class MockFetchPostsRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.Post>> fetchPosts() =>
+  _i3.Future<List<_i4.PostModel>> fetchPosts() =>
       (super.noSuchMethod(Invocation.method(#fetchPosts, []),
-              returnValue: Future<List<_i4.Post>>.value(<_i4.Post>[]))
-          as _i3.Future<List<_i4.Post>>);
+              returnValue: Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]))
+          as _i3.Future<List<_i4.PostModel>>);
 }
