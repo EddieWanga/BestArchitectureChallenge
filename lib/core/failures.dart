@@ -4,3 +4,12 @@ abstract class Failure extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class ServiceFailure extends Failure {
+  final Object exception;
+
+  ServiceFailure(this.exception);
+
+  @override
+  List<Object> get props => [exception];
+}

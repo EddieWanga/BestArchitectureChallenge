@@ -9,7 +9,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../helpers/shared_helpers.dart';
-import 'fetch_posts_tests.mocks.dart';
+import 'fetch_posts_test.mocks.dart';
 
 @GenerateMocks([FetchPostsRepository])
 void main() async {
