@@ -1,7 +1,6 @@
-# 📢📢📢 Flutter Best Architecture Challenge 📢📢📢
+# 🐶🐨🦁 Flutter Best Architecture Challenge 🦁🐨🐶
 此為參加 Flutter Best Architecture Challenge 活動的專案 
 
----
 ## Architecture
 
 - Clean architecture with Bloc, reference: [TDD Clean Architecture](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/)
@@ -14,7 +13,6 @@
 - Graph:
 ![architecture](architecture.png)
 
----
 ## 3rd Party Libraries
 
 - [get_it](https://pub.dev/packages/get_it) - Setting up a service locator, for injecting dependencies
@@ -25,11 +23,10 @@
 - [mockito](https://pub.dev/packages/mockito) - APIs for Fakes, Mocks..etc
 - [build_runner](https://pub.dev/packages/build_runner) - For for Dart code generation
 - [http](https://pub.dev/packages/http) - Future-based API for HTTP requests
-___
+
 ## Preview
 ![preivew](preview.gif)
 
----
 ## Environment
 
 ```
