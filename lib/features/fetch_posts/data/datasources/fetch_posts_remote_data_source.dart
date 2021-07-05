@@ -14,9 +14,9 @@ class FetchPostsRemoteDataSourceImpl extends FetchPostsRemoteDataSource {
 
   @override
   Future<List<PostModel>> fetchPosts() async {
-    var url = Uri.https('jsonplaceholder.typicode.com', '/posts');
-    var response = await client.get(url);
-    print("response=${response.body}");
+    final url = Uri.https('jsonplaceholder.typicode.com', '/posts');
+    final response = await client.get(url);
+
     if (response.statusCode == 200) {
       List<dynamic> result = json.decode(response.body);
       return result.map((e) => PostModel.fromJson(e)).toList();
