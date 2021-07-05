@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
       - name: Analyzer
         run: dart analyze --fatal-infos --fatal-warnings
       - name: Tests
-        run: dart test
+        run: flutter test
