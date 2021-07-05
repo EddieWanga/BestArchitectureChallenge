@@ -49,7 +49,7 @@ void main() async {
           .thenAnswer((_) async => Left(anyFailure));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts()),
+    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
     expect: () => [FetchPostsLoading(), FetchPostsError(anyFailure)],
   );
 
@@ -59,8 +59,9 @@ void main() async {
       when(mockFetchPosts(NoParams())).thenAnswer((_) async => Right(empty));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts()),
-    expect: () => [FetchPostsLoading(), FetchPostsLoaded(empty)],
+    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
+    expect: () =>
+        [FetchPostsLoading(), FetchPostsLoaded(sort: 1, posts: empty)],
   );
 
   blocTest<FetchPostsBloc, FetchPostsState>(
@@ -69,7 +70,8 @@ void main() async {
       when(mockFetchPosts(NoParams())).thenAnswer((_) async => Right(posts));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts()),
-    expect: () => [FetchPostsLoading(), FetchPostsLoaded(posts)],
+    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
+    expect: () =>
+        [FetchPostsLoading(), FetchPostsLoaded(sort: 1, posts: posts)],
   );
 }

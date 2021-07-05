@@ -5,4 +5,11 @@ abstract class FetchPostsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class StartFetchPosts extends FetchPostsEvent {}
+class StartFetchPosts extends FetchPostsEvent {
+  final int sort;
+
+  StartFetchPosts({required this.sort});
+
+  @override
+  List<Object> get props => [sort];
+}

@@ -24,7 +24,7 @@ class FetchPostsBloc extends Bloc<FetchPostsEvent, FetchPostsState> {
       yield FetchPostsLoading();
       final result = await fetchPosts(NoParams());
       yield result.fold((failure) => FetchPostsError(failure),
-              (posts) => FetchPostsLoaded(posts));
+          (posts) => FetchPostsLoaded(sort: event.sort, posts: posts));
     }
   }
 }

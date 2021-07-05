@@ -1,3 +1,4 @@
+import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/presentation/bloc/fetch_posts_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: BlocProvider(
-        create: (_) => di.sl<FetchPostsBloc>()..add(StartFetchPosts()),
+        create: (_) => di.sl<FetchPostsBloc>()..add(StartFetchPosts(sort: 1)),
         child: PostPage(title: 'FlutterTaipei :)'),
       ),
     );
@@ -54,7 +55,7 @@ class PostPage extends StatelessWidget {
                     ],
                 onSelected: (int value) {
                   BlocProvider.of<FetchPostsBloc>(context)
-                      .add(StartFetchPosts());
+                      .add(StartFetchPosts(sort: value));
                 })
           ],
         ),
@@ -62,12 +63,11 @@ class PostPage extends StatelessWidget {
             builder: (context, state) {
           if (state is FetchPostsLoaded) {
             final posts = state.posts;
+            postsSorted(posts, state.sort);
             return ListView.separated(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {
-                  String id = posts[index].id;
-                  String title = posts[index].title;
-                  String body = posts[index].body;
+                  final post = posts[index];
                   return Container(
                       padding: EdgeInsets.all(8),
                       child: RichText(
@@ -75,11 +75,11 @@ class PostPage extends StatelessWidget {
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                              text: "$id. $title",
+                              text: "${post.id}. ${post.title}",
                               style: TextStyle(fontSize: 18, color: Colors.red),
                             ),
                             TextSpan(
-                              text: '\n' + body,
+                              text: '\n' + post.body,
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -95,23 +95,11 @@ class PostPage extends StatelessWidget {
         }));
   }
 
-// void _fetchData(int sort) async {
-//   var url = Uri.https('jsonplaceholder.typicode.com', '/posts');
-//   var response = await http.get(url);
-//   print("response=${response.body}");
-//   List<dynamic> result = jsonDecode(response.body);
-//   if (sort == _sortWithId) {
-//     result.sort((a, b) {
-//       return int.parse(a['id'].toString())
-//           .compareTo(int.parse(b['id'].toString()));
-//     });
-//   } else if (sort == _sortWithTitle) {
-//     result.sort((a, b) {
-//       return a['title'].toString().compareTo(b['title'].toString());
-//     });
-//   }
-//   setState(() {
-//     _posts = result;
-//   });
-// }
+  void postsSorted(List<Post> posts, int sort) {
+    if (sort == _sortWithId) {
+      posts.sort((a, b) => int.parse(a.id).compareTo(int.parse(b.id)));
+    } else if (sort == _sortWithTitle) {
+      posts.sort((a, b) => a.title.compareTo(b.title));
+    }
+  }
 }
