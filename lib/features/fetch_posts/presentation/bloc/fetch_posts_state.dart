@@ -10,10 +10,9 @@ class FetchPostsInitial extends FetchPostsState {}
 class FetchPostsLoading extends FetchPostsState {}
 
 class FetchPostsLoaded extends FetchPostsState {
-  final int sort;
   final List<Post> posts;
 
-  FetchPostsLoaded({required this.sort, required this.posts});
+  FetchPostsLoaded({required this.posts});
 
   @override
   List<Object> get props => [posts];

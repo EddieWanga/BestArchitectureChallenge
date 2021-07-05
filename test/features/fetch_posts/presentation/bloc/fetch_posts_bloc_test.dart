@@ -1,5 +1,5 @@
-import 'package:best_architecture_challenge/core/usecase.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart';
+import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/sort_by.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/usecases/fetch_posts.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/presentation/bloc/fetch_posts_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -14,8 +14,8 @@ import 'fetch_posts_bloc_test.mocks.dart';
 @GenerateMocks([FetchPosts])
 void main() async {
   final posts = [
-    Post(id: 'any id', title: 'any title', body: 'any body'),
-    Post(id: 'another id', title: 'another title', body: 'another body'),
+    Post(id: 1, title: 'z title', body: 'any body'),
+    Post(id: 2, title: 'a title', body: 'another body'),
   ];
 
   final empty = <Post>[];
@@ -45,33 +45,33 @@ void main() async {
   blocTest<FetchPostsBloc, FetchPostsState>(
     'FetchPosts emits [Loading, Error] when failure',
     build: () {
-      when(mockFetchPosts(NoParams()))
+      when(mockFetchPosts(FetchPostsParams(sortBy: SortBy.id)))
           .thenAnswer((_) async => Left(anyFailure));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
+    act: (bloc) => bloc.add(StartFetchPosts(sortBy: SortBy.id)),
     expect: () => [FetchPostsLoading(), FetchPostsError(anyFailure)],
   );
 
   blocTest<FetchPostsBloc, FetchPostsState>(
     'FetchPosts emits [Loading, Loaded] when empty',
     build: () {
-      when(mockFetchPosts(NoParams())).thenAnswer((_) async => Right(empty));
+      when(mockFetchPosts(FetchPostsParams(sortBy: SortBy.id)))
+          .thenAnswer((_) async => Right(empty));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
-    expect: () =>
-        [FetchPostsLoading(), FetchPostsLoaded(sort: 1, posts: empty)],
+    act: (bloc) => bloc.add(StartFetchPosts(sortBy: SortBy.id)),
+    expect: () => [FetchPostsLoading(), FetchPostsLoaded(posts: empty)],
   );
 
   blocTest<FetchPostsBloc, FetchPostsState>(
     'FetchPosts emits [Loading, Loaded] when load data success',
     build: () {
-      when(mockFetchPosts(NoParams())).thenAnswer((_) async => Right(posts));
+      when(mockFetchPosts(FetchPostsParams(sortBy: SortBy.id)))
+          .thenAnswer((_) async => Right(posts));
       return bloc;
     },
-    act: (bloc) => bloc.add(StartFetchPosts(sort: 1)),
-    expect: () =>
-        [FetchPostsLoading(), FetchPostsLoaded(sort: 1, posts: posts)],
+    act: (bloc) => bloc.add(StartFetchPosts(sortBy: SortBy.id)),
+    expect: () => [FetchPostsLoading(), FetchPostsLoaded(posts: posts)],
   );
 }

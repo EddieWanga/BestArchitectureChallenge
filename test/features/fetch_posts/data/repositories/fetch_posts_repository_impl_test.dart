@@ -13,8 +13,8 @@ import 'fetch_posts_repository_impl_test.mocks.dart';
 @GenerateMocks([FetchPostsRemoteDataSource])
 void main() async {
   final posts = [
-    PostModel(id: 'any id', title: 'any title', body: 'any body'),
-    PostModel(id: 'another id', title: 'another title', body: 'another body'),
+    PostModel(id: 1, title: 'z title', body: 'any body'),
+    PostModel(id: 2, title: 'a title', body: 'another body'),
   ];
 
   final emptyPost = <PostModel>[];

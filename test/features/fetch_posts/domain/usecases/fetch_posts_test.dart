@@ -1,6 +1,6 @@
 import 'package:best_architecture_challenge/core/failures.dart';
-import 'package:best_architecture_challenge/core/usecase.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart';
+import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/sort_by.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/repositories/fetch_posts_repository.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/usecases/fetch_posts.dart';
 import 'package:dartz/dartz.dart';
@@ -14,8 +14,8 @@ import 'fetch_posts_test.mocks.dart';
 @GenerateMocks([FetchPostsRepository])
 void main() async {
   final posts = [
-    Post(id: 'any id', title: 'any title', body: 'any body'),
-    Post(id: 'another id', title: 'another title', body: 'another body'),
+    Post(id: 1, title: 'z title', body: 'any body'),
+    Post(id: 2, title: 'a title', body: 'another body'),
   ];
 
   final emptyPost = Right<Failure, List<Post>>([]);
@@ -29,11 +29,11 @@ void main() async {
 
   test(
     'FetchPosts when failure',
-        () async {
+    () async {
       when(mockFetchPostsRepository.fetchPosts())
           .thenAnswer((_) async => Left(anyFailure));
 
-      final result = await usecase(NoParams());
+      final result = await usecase(FetchPostsParams(sortBy: SortBy.id));
 
       expect(result, Left(anyFailure));
       verify(mockFetchPostsRepository.fetchPosts());
@@ -43,11 +43,11 @@ void main() async {
 
   test(
     'FetchPosts when empty',
-        () async {
+    () async {
       when(mockFetchPostsRepository.fetchPosts())
           .thenAnswer((_) async => emptyPost);
 
-      final result = await usecase(NoParams());
+      final result = await usecase(FetchPostsParams(sortBy: SortBy.id));
 
       expect(result, emptyPost);
       verify(mockFetchPostsRepository.fetchPosts());
@@ -56,12 +56,26 @@ void main() async {
   );
 
   test(
-    'FetchPosts when success',
+    'FetchPosts sorted by id when success',
+    () async {
+      when(mockFetchPostsRepository.fetchPosts())
+          .thenAnswer((_) async => Right(posts));
+
+      final result = await usecase(FetchPostsParams(sortBy: SortBy.id));
+
+      expect(result, Right(posts));
+      verify(mockFetchPostsRepository.fetchPosts());
+      verifyNoMoreInteractions(mockFetchPostsRepository);
+    },
+  );
+
+  test(
+    'FetchPosts sorted by title when success',
         () async {
       when(mockFetchPostsRepository.fetchPosts())
           .thenAnswer((_) async => Right(posts));
 
-      final result = await usecase(NoParams());
+      final result = await usecase(FetchPostsParams(sortBy: SortBy.title));
 
       expect(result, Right(posts));
       verify(mockFetchPostsRepository.fetchPosts());

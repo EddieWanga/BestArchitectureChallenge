@@ -6,10 +6,10 @@ abstract class FetchPostsEvent extends Equatable {
 }
 
 class StartFetchPosts extends FetchPostsEvent {
-  final int sort;
+  final SortBy sortBy;
 
-  StartFetchPosts({required this.sort});
+  StartFetchPosts({required this.sortBy});
 
   @override
-  List<Object> get props => [sort];
+  List<Object> get props => [sortBy];
 }

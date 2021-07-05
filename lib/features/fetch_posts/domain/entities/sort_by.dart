@@ -1,0 +1,2 @@
+
+enum SortBy { id, title }

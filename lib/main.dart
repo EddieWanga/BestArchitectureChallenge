@@ -1,4 +1,4 @@
-import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart';
+import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/sort_by.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/presentation/bloc/fetch_posts_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: BlocProvider(
-        create: (_) => di.sl<FetchPostsBloc>()..add(StartFetchPosts(sort: 1)),
+        create: (_) =>
+            di.sl<FetchPostsBloc>()..add(StartFetchPosts(sortBy: SortBy.id)),
         child: PostPage(title: 'FlutterTaipei :)'),
       ),
     );
@@ -30,9 +31,6 @@ class MyApp extends StatelessWidget {
 
 class PostPage extends StatelessWidget {
   PostPage({Key? key, required this.title}) : super(key: key);
-  static const int _sortWithId = 1;
-  static const int _sortWithTitle = 2;
-
   final String title;
 
   @override
@@ -46,16 +44,16 @@ class PostPage extends StatelessWidget {
                 itemBuilder: (context) => [
                       PopupMenuItem(
                         child: Text('使用id排序'),
-                        value: _sortWithId,
+                        value: SortBy.id,
                       ),
                       PopupMenuItem(
                         child: Text('使用title排序'),
-                        value: _sortWithTitle,
+                        value: SortBy.title,
                       )
                     ],
-                onSelected: (int value) {
+                onSelected: (SortBy sortBy) {
                   BlocProvider.of<FetchPostsBloc>(context)
-                      .add(StartFetchPosts(sort: value));
+                      .add(StartFetchPosts(sortBy: sortBy));
                 })
           ],
         ),
@@ -63,7 +61,6 @@ class PostPage extends StatelessWidget {
             builder: (context, state) {
           if (state is FetchPostsLoaded) {
             final posts = state.posts;
-            postsSorted(posts, state.sort);
             return ListView.separated(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {
@@ -93,13 +90,5 @@ class PostPage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           }
         }));
-  }
-
-  void postsSorted(List<Post> posts, int sort) {
-    if (sort == _sortWithId) {
-      posts.sort((a, b) => int.parse(a.id).compareTo(int.parse(b.id)));
-    } else if (sort == _sortWithTitle) {
-      posts.sort((a, b) => a.title.compareTo(b.title));
-    }
   }
 }

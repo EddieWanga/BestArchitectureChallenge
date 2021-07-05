@@ -5,7 +5,6 @@
 import 'dart:async' as _i5;
 
 import 'package:best_architecture_challenge/core/failures.dart' as _i6;
-import 'package:best_architecture_challenge/core/usecase.dart' as _i8;
 import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart'
     as _i7;
 import 'package:best_architecture_challenge/features/fetch_posts/domain/repositories/fetch_posts_repository.dart'
@@ -43,7 +42,7 @@ class MockFetchPosts extends _i1.Mock implements _i4.FetchPosts {
       returnValue: _FakeFetchPostsRepository()) as _i2.FetchPostsRepository);
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Post>>> call(
-          _i8.NoParams? params) =>
+          _i4.FetchPostsParams? params) =>
       (super.noSuchMethod(Invocation.method(#call, [params]),
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.Post>>>.value(
               _FakeEither<_i6.Failure, List<_i7.Post>>())) as _i5

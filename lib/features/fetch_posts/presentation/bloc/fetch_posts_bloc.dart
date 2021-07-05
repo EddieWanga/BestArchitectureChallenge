@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:best_architecture_challenge/core/failures.dart';
-import 'package:best_architecture_challenge/core/usecase.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/post.dart';
+import 'package:best_architecture_challenge/features/fetch_posts/domain/entities/sort_by.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/usecases/fetch_posts.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -22,9 +22,9 @@ class FetchPostsBloc extends Bloc<FetchPostsEvent, FetchPostsState> {
   ) async* {
     if (event is StartFetchPosts) {
       yield FetchPostsLoading();
-      final result = await fetchPosts(NoParams());
+      final result = await fetchPosts(FetchPostsParams(sortBy: event.sortBy));
       yield result.fold((failure) => FetchPostsError(failure),
-          (posts) => FetchPostsLoaded(sort: event.sort, posts: posts));
+          (posts) => FetchPostsLoaded(posts: posts));
     }
   }
 }
