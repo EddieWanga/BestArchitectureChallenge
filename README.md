@@ -1,3 +1,5 @@
+[![Dart CI](https://github.com/dan12411/BestArchitectureChallenge/actions/workflows/dart.yml/badge.svg)](https://github.com/dan12411/BestArchitectureChallenge/actions/workflows/dart.yml)
+
 # 🐶🐨🦁 Flutter Best Architecture Challenge 🦁🐨🐶
 此為參加 Flutter Best Architecture Challenge 活動的專案 
 
