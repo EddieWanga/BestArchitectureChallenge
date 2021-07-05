@@ -4,9 +4,9 @@ import 'package:best_architecture_challenge/features/fetch_posts/domain/entities
 import 'package:best_architecture_challenge/features/fetch_posts/domain/repositories/fetch_posts_repository.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/domain/usecases/fetch_posts.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import '../../../../helpers/shared_helpers.dart';
 import 'fetch_posts_test.mocks.dart';
@@ -71,7 +71,7 @@ void main() async {
 
   test(
     'FetchPosts sorted by title when success',
-        () async {
+    () async {
       when(mockFetchPostsRepository.fetchPosts())
           .thenAnswer((_) async => Right(posts));
 

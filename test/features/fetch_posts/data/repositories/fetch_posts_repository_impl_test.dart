@@ -3,9 +3,9 @@ import 'package:best_architecture_challenge/features/fetch_posts/data/datasource
 import 'package:best_architecture_challenge/features/fetch_posts/data/models/post_model.dart';
 import 'package:best_architecture_challenge/features/fetch_posts/data/repositories/fetch_posts_repository_impl.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import '../../../../helpers/shared_helpers.dart';
 import 'fetch_posts_repository_impl_test.mocks.dart';

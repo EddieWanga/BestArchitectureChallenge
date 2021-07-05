@@ -4,9 +4,9 @@ import 'package:best_architecture_challenge/features/fetch_posts/domain/usecases
 import 'package:best_architecture_challenge/features/fetch_posts/presentation/bloc/fetch_posts_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import '../../../../helpers/shared_helpers.dart';
 import 'fetch_posts_bloc_test.mocks.dart';
