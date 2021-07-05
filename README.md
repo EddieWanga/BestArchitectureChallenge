@@ -20,7 +20,7 @@
      - `FetchPostDataRemoteDataSource`,`FetchPostDataRemoteDataSourceImpl` - interface & implementation of remote data source
 
 - Graph:
-![architecture](architecture.png)
+<img src="https://github.com/dan12411/BestArchitectureChallenge/blob/main/architecture.png" width="50%">
 
 - Pros:
   - Make testing easier
