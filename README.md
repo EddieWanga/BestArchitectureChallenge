@@ -22,6 +22,14 @@
 - Graph:
 ![architecture](architecture.png)
 
+- Pros:
+  - Make testing easier
+  - Allow independent development (and deployment, and testing in isolation/parallel)
+- Cons: 
+  - Split into many modules, complex.
+  - Learing curve.
+
+- [Some traits of a good architecture](https://www.essentialdeveloper.com/articles/clean-ios-architecture-part-2-good-architecture-traits)
 ## 3rd Party Libraries
 
 - [get_it](https://pub.dev/packages/get_it) - Setting up a service locator, for injecting dependencies
