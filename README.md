@@ -23,13 +23,15 @@
 <img src="https://github.com/dan12411/BestArchitectureChallenge/blob/main/architecture.png" width="50%">
 
 - Pros:
-  - Make testing easier
-  - Allow independent development (and deployment, and testing in isolation/parallel)
+  - Make testing easier.
+  - Allow independent development.
+  - More reusable components.
 - Cons: 
-  - Split into many modules, complex.
-  - Learing curve.
+  - Split into many modules, more complex.
+  - [Service Locator is an Anti-Pattern](https://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/).
+  - Maybe more time comsuption.
 
-- [Some traits of a good architecture](https://www.essentialdeveloper.com/articles/clean-ios-architecture-part-2-good-architecture-traits)
+- More: [Some traits of a good architecture](https://www.essentialdeveloper.com/articles/clean-ios-architecture-part-2-good-architecture-traits)
 ## 3rd Party Libraries
 
 - [get_it](https://pub.dev/packages/get_it) - Setting up a service locator, for injecting dependencies
