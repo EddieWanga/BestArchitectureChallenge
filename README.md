@@ -5,7 +5,7 @@
 
 ## Architecture
 
-- Clean architecture with Bloc, reference: [TDD Clean Architecture](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/)
+- **Reso Coder's Flutter Clean Architecture Proposal**, reference: [TDD Clean Architecture](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/)
   
 - Separate into 3 layers:
   1. Presentation Layer
