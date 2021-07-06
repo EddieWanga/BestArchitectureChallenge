@@ -57,8 +57,8 @@ Engine • revision 0fdb562ac8
 Tools • Dart 2.13.1
 ```
 
-## Contact
-[twitter](https://twitter.com/dan_phy1988)
+## Contact Information
+<a href="https://twitter.com/dan_phy1988"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
 
 
 
