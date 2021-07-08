@@ -9,17 +9,17 @@
   
 - Separate into 3 layers:
   1. Presentation Layer
-     - `FetchPostsBloc`, `FetchPostsEventt`, `FetchPostsState` - handles basic input conversion and validation.
+     - `FetchPostsBloc`, `FetchPostsEvent`, `FetchPostsState` - Handles basic input conversion and validation.
      - `PostPage`
      - `PostView`
   2. Doamin Layer
-     - `FetchPost` - use case, handle business logic.
-     - `FetchPostRepository` - interface between domain and data layer.
-     - `Post`,`SortBy` - entities.
+     - `FetchPost` - Use case, handle business logic.
+     - `FetchPostRepository` - Interface between domain and data layer.
+     - `Post`,`SortBy` - Entities.
   3. Data Layer
-     - `FetchPostRepositoryImpl` - implementation of repository
-     - `PostModel` - model extends entities, knowing infrastructure detail.
-     - `FetchPostDataRemoteDataSource`,`FetchPostDataRemoteDataSourceImpl` - interface & implementation of remote data source
+     - `FetchPostRepositoryImpl` - Implementation of repository
+     - `PostModel` - Model extends entities, knowing infrastructure detail.
+     - `FetchPostDataRemoteDataSource`,`FetchPostDataRemoteDataSourceImpl` - Interface & implementation of remote data source
 
 - Graph:
 <img src="https://github.com/dan12411/BestArchitectureChallenge/blob/main/architecture.png" width="50%">
