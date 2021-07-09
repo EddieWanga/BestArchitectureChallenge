@@ -34,6 +34,7 @@
   - Maybe more time comsuption.
 
 - More: [Some traits of a good architecture](https://www.essentialdeveloper.com/articles/clean-ios-architecture-part-2-good-architecture-traits)
+
 ## 3rd Party Libraries
 
 - [get_it](https://pub.dev/packages/get_it) - Setting up a service locator, for injecting dependencies
@@ -44,6 +45,13 @@
 - [mockito](https://pub.dev/packages/mockito) - APIs for Fakes, Mocks..etc
 - [build_runner](https://pub.dev/packages/build_runner) - For for Dart code generation
 - [http](https://pub.dev/packages/http) - Future-based API for HTTP requests
+
+## Unit Tests
+
+- Use case tests: test fetch data when failure/empty/success (sorted by id/title).
+- Repository tests: test fetch data when failure/empty/success.
+- Remote data source tests: test fetch data when http status code is 200/404.
+- Bloc tests: test initial state, load data state when failure/success.
 
 ## Preview
 ![preivew](preview.gif)
